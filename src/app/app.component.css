@@ -1,0 +1,29 @@
+
+.fsheader{
+  display:flex;
+  flex-direction: row;
+
+}
+fs-tree{
+  width: 30%;
+  background-color: olivedrab;
+  font-family: "Sitka Banner";
+}
+fs-content{
+  width: 70%;
+  background-color: darkgrey;
+}
+
+ul{
+  list-style-type: none;
+  font-family: David;
+  margin: 0px;
+  padding-left:15px;
+}
+
+li{
+  list-style: none;
+  font-family: Symbol;
+  margin: 0px;
+  padding-left:15px;
+}

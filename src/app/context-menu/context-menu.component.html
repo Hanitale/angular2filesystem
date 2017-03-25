@@ -1,0 +1,5 @@
+<div class="show-context-menu" (click)="shown=false;" (contextmenu)="shown=false" *ngIf="shown">
+  <ul class="context-menu" [ngStyle]="style">
+    <li *ngFor="let menuItem of menu"><a (click)="menuItem.callback()">{{menuItem.name}}</a></li>
+  </ul>
+</div>

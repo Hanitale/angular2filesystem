@@ -1,0 +1,44 @@
+Angular 2 API
+
+Get “root” by user (method: GET) http://hosting.webis.co.il:8085/api/items/get/Roman/
+
+Returns: {   "success": true,   "item": {     "children": [       {         "children": [],         "_id": "58d37a1cd6df735016a908d8",         "name": "sub2",         "owner": "58d3791fd6df735016a908cc",         "__v": 0       }     ],     "_id": "58d3792dd6df735016a908d3",     "name": "root",     "owner": "58d3791fd6df735016a908cc",     "__v": 0   } }
+
+
+Get item by user and id (method: GET) http://hosting.webis.co.il:8085/api/items/get/Roman/58d37a1cd6df735016a908d8
+
+Returns: {   "success": true,   "item": {     "children": [],     "_id": "58d37a1cd6df735016a908d8",     "name": "sub2",     "owner": "58d3791fd6df735016a908cc",     "__v": 0   } }
+
+
+
+Create item (method: POST) http://hosting.webis.co.il:8085/api/items/create
+
+Content type:  application/json
+
+Body example: {"parentId":"58d3792dd6df735016a908d3", "type":"folder", "name":"sub1", "owner":"Roman"}
+
+Returns: {   "success": true,   "item": {     "__v": 0,     "name": "sub1",     "parentId": "58d3792dd6df735016a908d3",     "owner": "58d3791fd6df735016a908cc",     "_id": "58d37a1cd6df735016a908d8"   } }
+
+
+Update item (method: POST) http://hosting.webis.co.il:8085/api/items/update/58d130359dc0692bc6bb6770
+
+Content type:  application/json
+
+Body example: {   "children": [],   "_id": "58d37a1cd6df735016a908d8",   "name": "sub2",   "owner": "58d3791fd6df735016a908cc",   "__v": 0 }
+
+Returns: {   "success": true,   "item": {     "children": [],     "_id": "58d37a1cd6df735016a908d8",
+    "name": "sub2",     "owner": "58d3791fd6df735016a908cc",     "__v": 0   } }
+ Delete item (method: GET) ​coming soon http://hosting.webis.co.il:8085/api/items/delete/58d130359dc0692bc6bb6770
+
+Returns: {   "success": true }
+
+
+Notice: On error api returns: {   success: false,   message:  “Error description” }
+
+
+
+http://hosting.webis.co.il:8085/api/items/get/Hanita - get root
+http://hosting.webis.co.il:8085/api/items/get/Hanita/58d37a1cd6df735016a908d8- get folder
+http://hosting.webis.co.il:8085/api/items/create - create item
+http://hosting.webis.co.il:8085/api/items/update/58d130359dc0692bc6bb6770 - update
+http://hosting.webis.co.il:8085/api/items/delete/58d3c35ebc27805200e13dc6 - delete

@@ -1,0 +1,14 @@
+.show-context-menu {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.context-menu {
+  border: solid 1px;
+  display: block;
+  background: mediumvioletred;
+  margin: 5px;
+}

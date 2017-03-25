@@ -1,0 +1,9 @@
+<div (contextmenu)="contextMenuEventHandler($event)">
+<span (click)="expanded =!expanded">{{folder.name}}</span>
+<ul *ngIf="expanded">
+  <li *ngFor="let child of folder.children" [id]="child._id">
+    {{child.name}}, {{child._id}}
+  </li>
+</ul>
+
+</div>
