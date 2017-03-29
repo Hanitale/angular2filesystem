@@ -1,0 +1,28 @@
+
+.fsheader{
+  display:flex;
+  flex-direction: row;
+
+}
+fs-tree{
+  width: 30%;
+  background-color: olivedrab;
+  font-family:"Comic Sans MS";
+}
+fs-content{
+  width: 70%;
+  background-color: darkgrey;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li{
+  list-style: none;
+
+}
+img{
+  width:25px;
+  height:25px;
+}

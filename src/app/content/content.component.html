@@ -1,3 +1,6 @@
-<div class="fscontent">
-<fs-folder></fs-folder>
+<div (contextmenu)="contextMenuEventHandler($event)">
+<span *ngFor="let child of folder.children" >
+    <fs-folder [id]="child._id"></fs-folder>
+
+</span>
 </div>

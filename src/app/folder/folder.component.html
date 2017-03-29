@@ -1,9 +1,9 @@
-<div (contextmenu)="contextMenuEventHandler($event)">
-<span (click)="expanded =!expanded">{{folder.name}}</span>
+<div >
+<span (contextmenu)="contextMenuEventHandler($event)" (click)="showContent()" ><img src="../../assets/open_folder.png" *ngIf="expanded"/>
+  <img src="../../assets/folder.png" *ngIf="!expanded"/> {{folder.name}}***{{folder._id}} </span>
 <ul *ngIf="expanded">
-  <li *ngFor="let child of folder.children" [id]="child._id">
-    {{child.name}}, {{child._id}}
+  <li *ngFor="let child of folder.children" >
+    <fs-folder [id]="child._id" *ngIf="child.children"></fs-folder>
   </li>
 </ul>
-
 </div>

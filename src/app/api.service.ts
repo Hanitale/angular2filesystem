@@ -6,14 +6,15 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 
 @Injectable()
-export class ApiService {
-  readonly OWNER:string = 'Roman';
+  export class ApiService {
+  readonly OWNER:string = 'Marco';
   private apiUrl:string = 'http://hosting.webis.co.il:8085/api';
+  public folder:any;
 
   constructor(private http:Http) { }
 
   getFolderById(id?: string) {
-    return this.http.get(this.apiUrl + '/items/get/' + this.OWNER)
+    return this.http.get(this.apiUrl + '/items/get/' + this.OWNER + (id ? '/' + id : ''))
       .map((data: Response) => { return data.json(); })
       .catch((err: Response) => {
         return Observable.throw(err)
@@ -30,14 +31,21 @@ export class ApiService {
 
   deleteItem(id){
     debugger;
-    return this.http.get(this.apiUrl +'/items/delete/'+ id !== undefined ? id : '')
+    let url = this.apiUrl + '/items/delete/';
+    let myId = id !== undefined ? id : '';
+    let both = url+myId;
+    return this.http.get(both)
       .map((data: Response) => { return data.json(); })
       .catch((err: Response) => {
         return Observable.throw(err)});
   }
 
-  updateItem(id:string, name:string, content:string){
-    return this.http.post(this.apiUrl+'/items/update/'+id !== undefined ? id : '', {_id:id, name:name, content:content})
+  updateItem(id:string, item:any){
+    debugger;
+    let url = this.apiUrl + '/items/update/';
+    let myId = id!== undefined ? id : '';
+    let both = url + myId;
+    return this.http.post(both, item)
     .map((data: Response) => { return data.json(); })
     .catch((err: Response) => {
      return Observable.throw(err)});

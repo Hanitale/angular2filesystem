@@ -11,6 +11,7 @@ import { TreeComponent } from './tree/tree.component';
 import { ContentComponent } from './content/content.component';
 import { ContextMenuComponent } from './context-menu/context-menu.component';
 import { ContextMenuService} from "./context-menu.service";
+import { HeaderComponent } from './header.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ContextMenuService} from "./context-menu.service";
     FileComponent,
     TreeComponent,
     ContentComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -8,53 +8,60 @@ import {ContextMenuService} from "../context-menu.service";
   styleUrls: ['./folder.component.css'],
 })
 export class FolderComponent implements OnInit {
-  test:string = '';
-  private folder: any;
+
+  @Input() folder: any;
   @Input() id?: string;
   @Input() name:string;
   private expanded: boolean = false;
-  private counter:number = 0;
-  private defaultName:string;
 
 
   constructor(private apiService: ApiService, private contextMenuService: ContextMenuService) {
     this.folder = this.folder || { children: [] };
-    this.name = this.name || this.giveDefaultName();
+
   }
 
   ngOnInit() {
       this.apiService.getFolderById(this.id).subscribe((response) => {
       this.folder = response.item;
-      console.log(this.folder);
+      console.log(this.folder.name + 'oninit folder');
       }, (err) => {
 
     });
   }
+  showContent(){
+    alert(this.folder.name);
+    this.expanded =!this.expanded;
+    this.folder = this.folder ;
+
+  }
   addNewFolder() {
-      this.apiService.createItem(this.folder._id, 'folder', this.name).subscribe((response) => {
+    debugger;
+      this.apiService.createItem(this.folder._id, 'folder', prompt('please enter folder name')).subscribe((response) => {
       if (!response.success) { console.log(response.message); return; }
       this.folder.children.push(response.item);
     });
   }
   addNewFile(){
-    this.apiService.createItem(this.folder._id, 'file', this.name).subscribe((response) => {
+    debugger;
+    this.apiService.createItem(this.folder._id, 'file', prompt('please enter file name')).subscribe((response) => {
       if (!response.success) { console.log(response.message); return; }
       this.folder.children.push(response.item);
     });
   }
-  giveDefaultName():string{
-    this.counter++;
-    return this.defaultName = 'new Folder'+this.counter;
-   }
 
-  Update(){
-    this.apiService.updateItem(this.id, this.name, null).subscribe((response)=>{
+
+  rename(){
+    debugger;
+    let newName = prompt('enter new name');
+    this.folder.name = newName;
+    this.apiService.updateItem(this.folder._id, this.folder).subscribe((response)=>{
       if (!response.success) { console.log(response.message); return; }
     });
 
   }
    deleteItem(){
-   this.apiService.deleteItem(this.id).subscribe((response)=>{
+    debugger;
+     this.apiService.deleteItem(this.folder._id).subscribe((response)=>{
      if (!response.success) { console.log(response.message); return; }
 
    });
@@ -62,14 +69,16 @@ export class FolderComponent implements OnInit {
    }
 
   contextMenuEventHandler(event) {
+    alert(this.folder.name);
   let menu =
   {
     event: event,
+
     items: [
-      { name: 'new folder ' + this.id, callback: () => this.addNewFolder() },
-      { name: 'new file ' + this.name, callback: () => this.addNewFile()},
-      { name: 'rename ' + this.name, callback: () => this.Update()},
-      { name: 'delete ' + this.id, callback: () => this.deleteItem() }
+      { name: 'new folder ' , callback: () => this.addNewFolder() },
+      { name: 'new file ' , callback: () => this.addNewFile()},
+      { name: 'rename ' , callback: () => this.rename()},
+      { name: 'delete ' , callback: () => this.deleteItem() }
     ]
   };
 

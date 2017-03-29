@@ -3,11 +3,13 @@
   display:flex;
   flex-direction: row;
 
+
 }
 fs-tree{
   width: 30%;
   background-color: olivedrab;
   font-family:"Comic Sans MS";
+
 }
 fs-content{
   width: 70%;

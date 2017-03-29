@@ -2,16 +2,22 @@
 .fsheader{
   display:flex;
   flex-direction: row;
+  height: 800px;
 
 }
 fs-tree{
   width: 30%;
   background-color: olivedrab;
   font-family: "Sitka Banner";
+  padding-top:15px;
+  padding-left:15px;
 }
 fs-content{
   width: 70%;
   background-color: darkgrey;
+  font-family: "Sitka Banner";
+  padding-top:15px;
+  padding-left:15px;
 }
 
 ul{
