@@ -4,12 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
+import {Subject} from "rxjs";
+import {FolderComponent} from "./folder/folder.component";
 
 @Injectable()
   export class ApiService {
-  readonly OWNER:string = 'Marco';
+  readonly OWNER:string = 'Hanita';
   private apiUrl:string = 'http://hosting.webis.co.il:8085/api';
   public folder:any;
+  public file:any;
+  public onFolderChange:Subject<FolderComponent> = new Subject();
 
   constructor(private http:Http) { }
 
@@ -22,6 +26,7 @@ import 'rxjs/add/observable/throw';
   }
 
   createItem(parentId: string, type: string, name: string) {
+    debugger;
     return this.http.post(this.apiUrl + '/items/create/', { parentId: parentId, type: type, name: name, owner: this.OWNER })
       .map((data: Response) => { return data.json(); })
       .catch((err: Response) => {

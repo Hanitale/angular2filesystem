@@ -1,6 +1,6 @@
 <div (contextmenu)="contextMenuEventHandler($event)">
 <span *ngFor="let child of folder.children" >
-    <fs-folder [id]="child._id"></fs-folder>
-
+    <fs-folder [id]="child._id" *ngIf="child.children"></fs-folder>
+    <fs-file [id]="child._id" *ngIf="!child.children"></fs-file>
 </span>
 </div>

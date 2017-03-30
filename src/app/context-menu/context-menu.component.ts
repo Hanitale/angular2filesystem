@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ContextMenuService } from '../context-menu.service';
 
 @Component({
@@ -7,9 +7,8 @@ import { ContextMenuService } from '../context-menu.service';
   styleUrls: ['./context-menu.component.css'],
 })
 export class ContextMenuComponent implements OnInit {
-
+  @Input() menu: any;
   shown: boolean = false;
-  menu: any[] = [];
   style: any;
 
   constructor(private contextMenuService: ContextMenuService) { }

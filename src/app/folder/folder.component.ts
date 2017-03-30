@@ -8,7 +8,7 @@ import {ContextMenuService} from "../context-menu.service";
   styleUrls: ['./folder.component.css'],
 })
 export class FolderComponent implements OnInit {
-
+  @Input() file:any;
   @Input() folder: any;
   @Input() id?: string;
   @Input() name:string;
@@ -29,11 +29,12 @@ export class FolderComponent implements OnInit {
     });
   }
   showContent(){
+    debugger;
     alert(this.folder.name);
     this.expanded =!this.expanded;
-    this.folder = this.folder ;
+    this.apiService.onFolderChange.next(this.folder);
+ }
 
-  }
   addNewFolder() {
     debugger;
       this.apiService.createItem(this.folder._id, 'folder', prompt('please enter folder name')).subscribe((response) => {
